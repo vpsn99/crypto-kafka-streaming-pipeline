@@ -10,7 +10,7 @@ class Settings(BaseModel):
     kafka_topic_trades: str = "crypto.trades.v1"
     kafka_client_id: str = "crypto-producer"
     kafka_acks: str = "all"
-
+    kafka_topic_dlq: str = "crypto.trades.dlq.v1" ##DLQ
     binance_ws_url: str = "wss://stream.binance.com:9443/ws/btcusdt@trade"
 
     log_level: str = "INFO"
@@ -23,6 +23,7 @@ def load_settings() -> Settings:
         kafka_topic_trades=os.getenv("KAFKA_TOPIC_TRADES", "crypto.trades.v1"),
         kafka_client_id=os.getenv("KAFKA_CLIENT_ID", "crypto-producer"),
         kafka_acks=os.getenv("KAFKA_ACKS", "all"),
+        kafka_topic_dlq=os.getenv("KAFKA_TOPIC_DLQ", "crypto.trades.dlq.v1"), ##DLQ
         binance_ws_url=os.getenv("BINANCE_WS_URL", "wss://stream.binance.com:9443/ws/btcusdt@trade"),
         log_level=os.getenv("LOG_LEVEL", "INFO"),
     )
