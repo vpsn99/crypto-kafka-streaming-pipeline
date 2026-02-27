@@ -32,4 +32,23 @@ print(
     """).fetchdf()
 )
 
+print("\nLatest pipeline_health_5m:\n")
+print(
+    con.execute("""
+        SELECT *
+        FROM main_marts.fct_pipeline_health_5m
+        LIMIT 5
+    """).fetchdf()
+)
+
+print("\nLatest ingestion_latency_1m:\n")
+print(
+    con.execute("""
+        SELECT *
+        FROM main_marts.fct_ingestion_latency_1m
+        ORDER BY minute_bucket DESC
+        LIMIT 5
+    """).fetchdf()
+)
+
 con.close()
