@@ -41,7 +41,7 @@ try {
 
   # Run staging + marts
   Log "Running dbt models"
-  dbt run --project-dir .\warehouse\dbt\crypto_dbt --profiles-dir .\warehouse\dbt --select stg_trades fct_trades_1m fct_candles_1m fct_orderflow_1m 2>&1 |
+  dbt run --project-dir .\warehouse\dbt\crypto_dbt --profiles-dir .\warehouse\dbt --select stg_trades fct_trades_1m fct_candles_1m fct_orderflow_1m fct_ingestion_latency_1m  fct_pipeline_health_5m 2>&1 |
     Tee-Object -FilePath $LogFile -Append | Out-Host
 
   Log "✅ dbt_refresh_marts completed OK"
